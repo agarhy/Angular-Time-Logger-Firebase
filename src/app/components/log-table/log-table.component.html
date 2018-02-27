@@ -1,0 +1,30 @@
+<div class="container">
+	<div class="row">
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Record Title</th>
+					<th>Time</th>
+					<th>Resume</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let record of records">
+					<td>{{ record.title }}</td>
+					<td>
+						{{ record.count }}
+					</td>
+					<td>
+						<button (click)="ResumeLog(record.id)" type="button" class="btn btn-sm btn-secondary">Resume</button>
+					</td>
+					<td>
+						<button (click)="deleteLog(record.id)" type="button" class="btn btn-sm btn-danger">Delete</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+</div>
