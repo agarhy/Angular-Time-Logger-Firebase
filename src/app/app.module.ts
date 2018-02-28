@@ -21,13 +21,22 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './components/main/main.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { LoggerComponent } from './components/logger/logger.component';
+import { TimmerComponent } from './components/timmer/timmer.component';
 import { LogTableComponent } from './components/log-table/log-table.component';
+import { SettingsComponent } from './components/settings/settings.comoponent';
 
 export const appRoutes: Routes =[
   {
     path:'',
-    component: MainComponent
+    component: TimmerComponent
+  },
+  {
+    path:'timer',
+    component: TimmerComponent
+  },
+  {
+    path:'settings',
+    component: SettingsComponent
   }
 ]
 
@@ -39,8 +48,9 @@ export const firebaseConfig=environment.firebaseConfig;
     MainComponent,
     NavbarComponent,
     SidebarComponent,
-    LoggerComponent,
-    LogTableComponent
+    TimmerComponent,
+    LogTableComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

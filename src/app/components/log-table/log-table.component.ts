@@ -10,7 +10,7 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['./log-table.component.css']
 })
 export class LogTableComponent implements OnInit {
-	@Output() resumeLogRecord = new EventEmitter<String>();
+	//@Output() resumeLogRecord = new EventEmitter<String>();
 
   	records:TimeLog[];
 
@@ -22,7 +22,7 @@ export class LogTableComponent implements OnInit {
   ngOnInit() {
   	this._logsService.getLogs().subscribe(logs => {
   		this.records= logs.map(c=>{
-  			console.log(c.count);
+  			//console.log(c.count);
   			c.count=moment.utc(moment.duration(c.count).asMilliseconds()).format("HH:mm:ss.S");
   			return c;
   		});
@@ -36,12 +36,16 @@ export class LogTableComponent implements OnInit {
   	this._logsService.deleteLog(id);
   }
 
-  ResumeLog(id:string){
+  resumeLog(id:string){
   	//const _rec=this._logsService.getLogById(id);
-
+    console.log('resume  id sent')
   	this._data.changeMessage(id);
   	//this.resumeLogRecord.emit(id);
-  	console.log(id);
+  	//console.log(id);
+  }
+
+  TrackLogByFn(index, log){
+     return log.$id; //
   }
 
 }

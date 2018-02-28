@@ -1,8 +1,12 @@
 export interface TimeLog {
-	_id:boolean,
+	$id?:string,
+	title:string,
 	running:boolean,
-	startOn:number,
-	stopOn:number,
-	count:number,
-	title:string
+	durations:[{
+		start:number,
+		stop:number
+	}],
+	count:string,
+	countMilliseconds:number
+	
 }

@@ -11,16 +11,16 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr *ngFor="let record of records">
+				<tr *ngFor="let record of records; trackBy TrackLogByFn ">
 					<td>{{ record.title }}</td>
 					<td>
 						{{ record.count }}
 					</td>
 					<td>
-						<button (click)="ResumeLog(record.id)" type="button" class="btn btn-sm btn-secondary">Resume</button>
+						<button (click)="resumeLog(record.$id)" type="button" class="btn btn-sm btn-secondary">Resume</button>
 					</td>
 					<td>
-						<button (click)="deleteLog(record.id)" type="button" class="btn btn-sm btn-danger">Delete</button>
+						<button (click)="deleteLog(record.$id)" type="button" class="btn btn-sm btn-danger">Delete</button>
 					</td>
 				</tr>
 			</tbody>

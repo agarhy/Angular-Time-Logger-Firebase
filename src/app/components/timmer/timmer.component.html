@@ -1,0 +1,16 @@
+
+<h1>Time Logger</h1>
+
+<div class="container">
+	
+	<div class="row">
+		<input type="text" name="title">
+		<span>{{ timmer.count }}</span>
+		<button [hidden]="timmer.running" type="button" (click)="switchTimmer()" class="btn btn-success">Start</button>	
+		<button [hidden]="!timmer.running" type="button" (click)="switchTimmer()" class="btn btn-danger">Stop</button>
+		<button [hidden]="timmer.running" type="button" (click)="initTimerLog()" class="btn btn-alert">Clear</button>
+	</div>
+</div>
+
+<app-log-table></app-log-table>
+
