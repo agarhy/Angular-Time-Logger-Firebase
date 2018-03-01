@@ -1,7 +1,7 @@
 <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
   <ul class="nav nav-pills flex-column">
     <li class="nav-item">
-      <a class="nav-link active" href="#" routerLink='/timer'>Logger <span class="sr-only">(current)</span></a>
+      <a class="nav-link" href="#" routerLink='/timer'>Logger <span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">Projects</a>
@@ -12,6 +12,16 @@
     <li class="nav-item">
       <a class="nav-link" href="#" routerLink='/settings'>Settings</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#" routerLink='/signup'>Register</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#" routerLink='/signin'>Login</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#" (click)="onSignOutClick()">Logout</a>
+    </li>
+
   </ul>
 
 

@@ -12,12 +12,12 @@ export class LogsService {
 
   constructor(
   	private _angularFireStore: AngularFirestore
-  	) { 
-
+  ) { 
+    this.timeLogsCollection=this._angularFireStore.collection<TimeLog>('timelogs');
   }
 
   getLogs(){
-    this.timeLogsCollection=this._angularFireStore.collection<TimeLog>('timelogs');
+    
     this.timelogs= this.timeLogsCollection.snapshotChanges().map(logs =>{
       return logs.map(record =>{
       const data = record.payload.doc.data() as TimeLog;
