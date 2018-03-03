@@ -63,9 +63,7 @@ export class TimmerComponent implements OnInit {
       countMilliseconds:0,   
     };    
 
-    localStorage.setItem('timerOn','false');
-    localStorage.setItem('startOn', '' );
-    localStorage.setItem('timerLogRecord','');
+    
   }
 
   startTimmer(){
@@ -111,6 +109,10 @@ export class TimmerComponent implements OnInit {
       this._logsService.updateLog(this.timmer);
 
     }
+    
+    localStorage.setItem('timerOn','false');
+    localStorage.setItem('startOn', '' );
+    localStorage.setItem('timerLogRecord','');
     
     this.initTimerLog();
   	//console.log(this.timmer);
