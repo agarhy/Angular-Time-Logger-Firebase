@@ -4,26 +4,41 @@
 <div class="row">
 	<div class="col-6">
 	<h3>General</h3>
-	<br>
-	<br>
+
 		<div class="row">
-			<div class="col-md-4">
+		<!-- 	<div class="col-md-4">
 				avatar
-			</div>
-			<div class="col-md-8">
-				
-				<form novalidate="" #f="ngForm" (ngSubmit)="onSubmit(f)" >
+			</div> -->
+			<div class="col-md-12">
 					<div class="form-group">
 						<label for="name">Name</label>
 						<input 
+							(change)="updaeUserName()"
 							type="text" 
 							name="name"
 							class="form-control" 
 							[(ngModel)]="user.name"
 							#userName="ngModel"
 							minlength="2"
-							required="" 
+							required
 						>
+						<div *ngIf="userName.errors?.required && userName.touched" class="alert alert-danger">You must have a Name !</div>
+						<div *ngIf="userName.errors?.minlength && userName.touched" class="alert alert-danger">Too short name</div>
+					</div>
+				<form novalidate #f="ngForm" (ngSubmit)="onSubmit(f)" >
+					
+					<div class="form-group">
+						<label for="name">Current Password</label>
+						<input 
+							type="password" 
+							name="currentPassowrd"
+							class="form-control" 
+							[(ngModel)]="password.current"
+							#currentPassowrd="ngModel"		
+							minlength="2"
+							required="" 
+						>					
+					
 						<label for="name">Email</label>
 						<input 
 							type="text" 
@@ -36,23 +51,24 @@
 						<br>
 						
 					</div>
+					<input type="submit" value="Save" name="submit" class="btn btn-block btn-primary">
 				</form>
 			</div>
 		</div>
-		<input type="submit" value="Save" name="submit" class="btn btn-block btn-primary">
+		
 		
 	</div>
 	<div class="col-6">
 		<h2>Change Password</h2>
-		<form novalidate="" #passwordF="ngForm" (ngSubmit)="onSubmitPass(passwordF)" >
+		<form novalidate="" #passwordF="ngForm" (ngSubmit)="onSubmitChangePassword(passwordF)" >
 			<div class="form-group">
 				<label for="name">Current Password</label>
 				<input 
 					type="password" 
-					name="password"
+					name="currentPassowrd"
 					class="form-control" 
-					[(ngModel)]="user.pass"
-					#userName="ngModel"
+					[(ngModel)]="password.current"
+					#currentPassowrd="ngModel"		
 					minlength="2"
 					required="" 
 				>
@@ -60,18 +76,18 @@
 				<input 
 					type="password" 
 					name="newPassword"
-					class="form-control" 
-					[(ngModel)]="user.pass"
-					#userEmail="ngModel"		
+					class="form-control"
+					[(ngModel)]="password.new"
+					#newPassowrd="ngModel"
 					required="" 
 				>
 				<label for="name">Confirm New Password</label>
 				<input 
 					type="password" 
 					name="ConfirmNewPassword"
-					class="form-control" 
-					[(ngModel)]="user.pass"
-					#userEmail="ngModel"		
+					class="form-control"
+					[(ngModel)]="password.confirm"
+					#ConfirmNewPassowrd="ngModel"
 					required="" 
 				>
 				<br>
@@ -85,21 +101,24 @@
 		<form novalidate #notificationsF="ngForm" (ngSubmit)="onSubmitNotif()" >
 			<div class="form-group">
 				<label class="custom-control custom-checkbox">
-			        <input class="custom-control-input" type="checkbox" [checked]="user.settings.notifications.a" (change)="updateSetting()" name="Notification 1">
+				{{user.settings.notifications.a}}
+			        <input class="custom-control-input" type="checkbox" [(ngModel)]="user.settings.notifications.a"  (change)="updateUserSetting()" name="Notification 1">
 			        <span class="custom-control-indicator"></span>
 			        <span class="custom-control-description">Notification 1</span>
 		        </label>
 			</div>
 			<div class="form-group">
 				<label class="custom-control custom-checkbox">
-			        <input class="custom-control-input" type="checkbox" [checked]="user.settings.notifications.b" (change)="updateSetting()" name="Notification 1">
+				{{user.settings.notifications.b}}
+			        <input class="custom-control-input" type="checkbox" [(ngModel)]="user.settings.notifications.b" (change)="updateUserSetting()" name="Notification 1">
 			        <span class="custom-control-indicator"></span>
 			        <span class="custom-control-description">Notification 2</span>
 		        </label>
 			</div>
 			<div class="form-group">
 				<label class="custom-control custom-checkbox">
-			        <input class="custom-control-input" type="checkbox" [checked]="user.settings.notifications.c" (change)="updateSetting()" name="Notification 1">
+				{{user.settings.notifications.c}}
+			        <input class="custom-control-input" type="checkbox" [(ngModel)]="user.settings.notifications.c" (change)="updateUserSetting()" name="Notification 1">
 			        <span class="custom-control-indicator"></span>
 			        <span class="custom-control-description">Notification 3</span>
 		        </label>
@@ -118,6 +137,7 @@
 					name="timezone"
 					[(ngModel)]=user.settings.timezone
 					#userSettingsTimezone="ngModel"
+					(change)="updateUserSetting()"
 				>
 					<option value="GMT">GMT</option>
 					<option value="UTC">UTC</option>
@@ -129,6 +149,7 @@
 					name="dateformat"
 					[(ngModel)]=user.settings.dateformat
 					#userSettingsDateformat="ngModel"
+					(change)="updateUserSetting()"
 				>
 					<option value="MM-DD-YY">MM-DD-YY</option>
 					<option value="MM/DD/YYYY">MM/DD/YYYY</option>
@@ -140,6 +161,7 @@
 					name="timeformat"
 					[(ngModel)]=user.settings.timeformat
 					#userSettingsTimeformat="ngModel"
+					(change)="updateUserSetting()"
 				>
 					<option value="12">12-hour</option>
 					<option value="24">24-hour</option>
@@ -152,6 +174,7 @@
 					name="durationformat"
 					[(ngModel)]=user.settings.durationformat
 					#userSettingsDurationformat="ngModel"
+					(change)="updateUserSetting()"
 				>
 					<option value="classic">32:02 min</option>
 					<option value="full">0:32:02</option>

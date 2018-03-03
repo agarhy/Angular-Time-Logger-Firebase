@@ -32,4 +32,18 @@ export class UserService {
 
   }
 
+  updateUser(user:User){
+
+     const recordDoc= this._angularFireStore.doc<User>('users/'+user.$id); 
+
+     return new Promise((resolve , reject)=>{
+      recordDoc.update(user).then(()=>{
+        resolve(true);
+      }).catch(err=>{
+        reject(err);
+      })
+     })
+
+  }
+
 }
