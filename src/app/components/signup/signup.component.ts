@@ -29,7 +29,7 @@ export class SignupComponent implements OnInit {
 
   onSubmit(){
     this.authService.register(this.email, this.password)
-      .then((userData) => {
+      .then((userData:User) => {
 
   		const _newUser:any = {
   			uid:userData.uid,
