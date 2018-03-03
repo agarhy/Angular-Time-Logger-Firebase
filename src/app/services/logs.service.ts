@@ -9,11 +9,14 @@ export class LogsService {
  timeLogsCollection: AngularFirestoreCollection<TimeLog>;
  timelogs: Observable<TimeLog[]>;
  recordDoc: AngularFirestoreDocument<TimeLog>;
-
+  uDocId:string;
   constructor(
   	private _angularFireStore: AngularFirestore
   ) { 
-    this.timeLogsCollection=this._angularFireStore.collection<TimeLog>('timelogs');
+    this.uDocId=localStorage.getItem('userDocId');
+
+    this.timeLogsCollection=this._angularFireStore.collection<TimeLog>('users/'+this.uDocId+'/timelogs');
+    console.log('users/'+this.uDocId+'/timelogs');
   }
 
   getLogs(){
@@ -34,18 +37,18 @@ export class LogsService {
 
   updateLog(log:TimeLog){
 
-     this.recordDoc= this._angularFireStore.doc<TimeLog>('timelogs/'+log.$id); 
+     this.recordDoc= this._angularFireStore.doc<TimeLog>('users/'+this.uDocId+'/timelogs/'+log.$id); 
      this.recordDoc.update(log);
   }
 
   deleteLog(_id:string){
-    this.recordDoc= this._angularFireStore.doc<TimeLog>('timelogs/'+_id);
+    this.recordDoc= this._angularFireStore.doc<TimeLog>('users/'+this.uDocId+'/timelogs/'+_id);
   	this.recordDoc.delete();
 
   }
 
   getLogById(_id:string){
-  	this.recordDoc= this._angularFireStore.doc<TimeLog>('timelogs/'+_id);
+  	this.recordDoc= this._angularFireStore.doc<TimeLog>('users/'+this.uDocId+'/timelogs/'+_id);
   	return this.recordDoc.snapshotChanges().map(record =>{
         const data = record.payload.data() as TimeLog;
         const $id = record.payload.id;

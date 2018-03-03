@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/User';
-
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 
@@ -8,10 +7,13 @@ import { Observable } from 'rxjs/Observable';
 export class UserService {
   usersCollectionRef: AngularFirestoreCollection<User>;
   userDoc: Observable<User[]>;
+ // currentUser: Observable<User[]>;
+
   constructor(
   	private _angularFireStore: AngularFirestore
   ) { 
   	this.usersCollectionRef=this._angularFireStore.collection<User>('users');
+
   }
 
   CreateNewUser(userData:User){

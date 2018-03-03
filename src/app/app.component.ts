@@ -18,15 +18,15 @@ export class AppComponent {
 
   ngOnInit(){
   	this.authService.getAuth().subscribe(auth => {
-  	 	console.log(auth);
+  	 	
   		if(auth){
-  			console.log('Logged');
+  	
   			this.isLoggedIn=true;
   			this.loggedUser.email=auth.email;
   			this.loggedUser.name=auth.displayName;
   			this.loggedUser.id=auth.uid;
   		}else{
-  			console.log('Logged out');
+  	
   			this.isLoggedIn=false;
   		}
   	})
