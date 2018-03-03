@@ -6,18 +6,18 @@
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
+        <!--   <li class="nav-item">
             <a class="nav-link" href="#">Home </a>
-          </li>        
+          </li>         -->
         </ul>
 
         <ul class="navbar-nav">
          <li *ngIf="isLoggedIn" class="nav-item">
-            <a class="nav-link"> Welcome, {{ loggedUser.email }} {{ loggedUser.id}}</a>
+            <a class="nav-link"> Welcome, {{ loggedUser.email }}</a>
           </li>
-          <li *ngIf="isLoggedIn" class="nav-item">
+     <!--      <li *ngIf="isLoggedIn" class="nav-item">
             <a class="nav-link" routerLink='/settings'>Settings</a>
-          </li>
+          </li> -->
     
           <li *ngIf="!isLoggedIn" class="nav-item">
             <a class="nav-link" href="#" routerLink='/signup'>Register</a>
