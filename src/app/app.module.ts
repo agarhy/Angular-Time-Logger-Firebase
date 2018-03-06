@@ -17,6 +17,7 @@ import { LogsService } from './services/logs.service';
 import { DataService } from './services/data.service';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
+import { ProjectService } from './services/project.service';
 import { AuthGuard } from './guards/auth.guard';
 
 
@@ -31,6 +32,7 @@ import { LogTableComponent } from './components/log-table/log-table.component';
 import { SettingsComponent } from './components/settings/settings.comoponent';
 import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
+import { ProjectsComponent } from './components/projects/projects.component';
 
 export const appRoutes: Routes =[
   {
@@ -60,6 +62,11 @@ export const appRoutes: Routes =[
     path:'signout',
     component: SignupComponent,
     canActivate:[AuthGuard]
+  },
+  {
+    path:'projects',
+    component: ProjectsComponent,
+    canActivate:[AuthGuard]
   }
 ]
 
@@ -75,7 +82,8 @@ export const firebaseConfig=environment.firebaseConfig;
     LogTableComponent,
     SettingsComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    ProjectsComponent
   ],
   imports: [
     BrowserModule,
@@ -93,7 +101,8 @@ export const firebaseConfig=environment.firebaseConfig;
     LogsService,
     DataService,
     AuthService,
-    UserService
+    UserService,
+    ProjectService
   ],
   bootstrap: [AppComponent]
 })
