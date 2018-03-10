@@ -3,6 +3,10 @@ import { LogsService } from '../../services/logs.service';
 import { TimeLog } from '../../models/time-log';
 import * as moment from 'moment';
 import { DataService } from '../../services/data.service';
+import { Observable } from 'rxjs';
+import 'rxjs/add/observable/from';
+import 'rxjs/operators';
+
 
 @Component({
 	selector: 'app-log-table',
@@ -12,15 +16,20 @@ import { DataService } from '../../services/data.service';
 export class LogTableComponent implements OnInit {
 	//@Output() resumeLogRecord = new EventEmitter<String>();
 
-	records:TimeLog[];
+	records:any[];
+	recordsGrouped:any[]=[];
+	//_rx:Observable<any>;
 
 	constructor(
 		public _logsService:LogsService,
 		public _data:DataService
+		
 		) { }
 
 	ngOnInit() {
 		this._logsService.getLogs().subscribe(logs => {
+			//console.log(logs);
+
 			this.records= logs.map(c=>{
   			//console.log(c.count);
   			c.count=moment.utc(moment.duration(c.count).asMilliseconds()).format("HH:mm:ss.S");
@@ -40,12 +49,45 @@ export class LogTableComponent implements OnInit {
 
   			return c;
   		});
-
+      this.applyFilters();
   		//console.log(this.records);
   	})
 		
 	}
 
+  applyFilters(){
+  	let src= Observable.from(this.records)
+      .groupBy(
+        function (x) { 
+        	return x.$day;         
+        },
+        //function (x) { return {day:x.$day,elm:x} }
+        ).flatMap(group => group.reduce((acc, curr) => [...acc, ...curr], []));
+    
+    var sub=src.subscribe(obj=>{
+    
+        console.log({day:obj[0].$day, records:obj});
+        var day=obj[0].$day;
+        var sumTime=0;
+        var records=obj.map(el=> {
+        	delete el.$day;
+        	sumTime+=el.countMilliseconds;
+        	return el;
+        })
+        this.recordsGrouped.push({
+        	day:day,
+        	sumTime:moment.utc(moment.duration(sumTime).asMilliseconds()).format("HH:mm:ss"),
+        	records:records
+        });
+    
+    },
+    function (err) {
+        console.log('Error: ' + err);   
+    },
+    function () {
+        console.log('Completed');   
+    });
+  }
 	deleteLog(id:string){
 		this._logsService.deleteLog(id);
 	}

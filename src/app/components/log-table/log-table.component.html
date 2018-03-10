@@ -1,16 +1,16 @@
-<div class="card timer-history">
+<div class="card timer-history" *ngFor="let day of recordsGrouped;">
 	<div class="card-header">
-
-		<span class="badge badge-pill badge-light">Today Aug 4, 2018</span>
+    
+		<span class="badge badge-pill badge-light">{{day.day}}</span>
 
 		<div class="badge badge-pill badge-light timer-history-count float-right">
-			3:23:29
+			{{ day.sumTime }}
 		</div>
 
 	</div>
 	<div class="card-body">
 
-	<div class="record" *ngFor="let record of records; trackBy TrackLogByFn ">
+	<div class="record" *ngFor="let record of day.records; trackBy TrackLogByFn ">
 			<div class="row record-wrp">
 				<div class=" title">
           {{ record.title }}

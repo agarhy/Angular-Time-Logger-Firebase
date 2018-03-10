@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { TimeLog } from '../models/time-log';
+import * as moment from 'moment';
 
 @Injectable()
 export class LogsService {
@@ -23,9 +24,15 @@ export class LogsService {
     
     this.timelogs= this.timeLogsCollection.snapshotChanges().map(logs =>{
       return logs.map(record =>{
+      	// console.log(record.payload.doc.data());
+      	// console.log(record.payload.doc.data().createdAt);
+      	var tt=record.payload.doc.data().createdAt;
+      	console.log(moment.utc(moment.duration(tt).asMilliseconds()).format("MM/DD/YYYY"));
+
+      	const $day=moment.utc(moment.duration(tt).asMilliseconds()).format("MM/DD/YYYY");
       const data = record.payload.doc.data() as TimeLog;
           const $id = record.payload.doc.id;
-          return { $id, ...data };
+          return { $day,$id, ...data };
       })
     });
   	return this.timelogs;
