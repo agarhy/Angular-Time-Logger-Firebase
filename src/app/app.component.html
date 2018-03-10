@@ -1,13 +1,11 @@
 <app-navbar></app-navbar>
 
-<div class="container-fluid">
-  <div class="row">
 <app-sidebar *ngIf="isLoggedIn"></app-sidebar>
-    <main 
-    [ngClass]="{'col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-4': isLoggedIn, 'col-sm-12 col-md-12 pt-3': !isLoggedIn}"
-    >
-    	<flash-messages></flash-messages>
-    	<router-outlet></router-outlet>
-    </main>
+
+
+<main>
+  <div class="container">
+	  <flash-messages></flash-messages>
+	  <router-outlet></router-outlet>
   </div>
-</div>    
+</main>

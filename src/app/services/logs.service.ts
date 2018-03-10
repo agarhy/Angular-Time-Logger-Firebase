@@ -15,7 +15,7 @@ export class LogsService {
   ) { 
     this.uDocId=localStorage.getItem('userDocId');
 
-    this.timeLogsCollection=this._angularFireStore.collection<TimeLog>('users/'+this.uDocId+'/timelogs');
+    this.timeLogsCollection=this._angularFireStore.collection<TimeLog>('users/'+this.uDocId+'/timelogs', ref=>ref.orderBy('createdAt','desc'));
     console.log('users/'+this.uDocId+'/timelogs');
   }
 

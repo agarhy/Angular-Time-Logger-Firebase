@@ -1,16 +1,27 @@
-
-<h1>Time Logger</h1>
-
-<div class="container">
-	
-	<div class="row">
-		<input type="text" name="title">
-		<span>{{ timmer.count }}</span>
-		<button [hidden]="timmer.running" type="button" (click)="switchTimmer()" class="btn btn-success">Start</button>	
-		<button [hidden]="!timmer.running" type="button" (click)="switchTimmer()" class="btn btn-danger">Stop</button>
-		<button [hidden]="timmer.running" type="button" (click)="initTimerLog()" class="btn btn-alert">Clear</button>
+<section class="timer-section">
+<form >
+<input type="text" class="form-control" id="title" [(ngModel)]="timerTitle" placeholder="Enter title.  e.g. Workout, Running">
+</form>
+	<div class="timer-actions">
+		<div class="timer-counter">
+			{{ timmer.time.minutes }}:{{ timmer.time.seconds }} <small>{{ timmer.time.mseconds }}</small>
+		</div>
+		<button [hidden]="timmer.running" type="button" class="btn rounded-circle btn-success" (click)="switchTimmer()" ><i class="material-icons">play_arrow</i></button>
+		<button [hidden]="!timmer.running" type="button" class="btn rounded-circle btn-danger" (click)="switchTimmer()" ><i class="material-icons">stop</i></button>
+		<div class="timer-switch">
+			<ul>
+				<li class="active">
+					<a href="" class="btn btn-sm"><i class="material-icons">timer</i></a>
+				</li>
+				<li class="">
+					<a href="" class="btn btn-sm"><i class="material-icons">timelapse</i></a>
+				</li>
+			</ul>
+		</div>
 	</div>
-</div>
+
+</section>												
+
 
 <app-log-table></app-log-table>
 

@@ -1,30 +1,46 @@
-<div class="container">
-	<div class="row">
+<div class="card timer-history">
+	<div class="card-header">
 
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Record Title</th>
-					<th>Time</th>
-					<th>Resume</th>
-					<th>Delete</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr *ngFor="let record of records; trackBy TrackLogByFn ">
-					<td>{{ record.title }}</td>
-					<td>
-						{{ record.count }}
-					</td>
-					<td>
-						<button (click)="resumeLog(record.$id)" type="button" class="btn btn-sm btn-secondary">Resume</button>
-					</td>
-					<td>
-						<button (click)="deleteLog(record.$id)" type="button" class="btn btn-sm btn-danger">Delete</button>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<span class="badge badge-pill badge-light">Today Aug 4, 2018</span>
+
+		<div class="badge badge-pill badge-light timer-history-count float-right">
+			3:23:29
+		</div>
 
 	</div>
-</div>
+	<div class="card-body">
+
+	<div class="record" *ngFor="let record of records; trackBy TrackLogByFn ">
+			<div class="row record-wrp">
+				<div class=" title">
+          {{ record.title }}
+				</div>
+				<div class="flex-wrp" >
+					<div class=" counter justify-content-center">
+						<span class="badge badge-pill badge-info">4</span>
+						{{ record.time.minutes }}:{{ record.time.seconds }}
+					</div>
+					<div class=" actions">			    					
+						<button (click)="resumeLog(record.$id)" type="button" class="btn btn-sm btn-link"><i class="material-icons">play_arrow</i></button>		
+						<button (click)="deleteLog(record.$id)" type="button" class="btn btn-sm btn-link">Delete</button>	    			
+						<button type="button" class="btn btn-sm btn-link"><i class="material-icons">more_vert</i></button>
+
+					</div>
+				</div>
+			</div>
+<!-- 			<div class="durations">
+				<div class="row">
+					<div class="col-sm-6">@ 12:32:33 -> 13:53:22 </div>			    						
+					<div class="col-sm-6">( 0:32:22 )</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">@ 12:32:33 -> 13:53:22 </div>			    						
+					<div class="col-sm-6">( 43:33 )</div>
+				</div>
+			</div> -->
+		</div>
+
+
+	</div>
+
+</div> 	

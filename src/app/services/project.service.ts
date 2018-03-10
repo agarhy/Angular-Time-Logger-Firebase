@@ -19,7 +19,8 @@ export class ProjectService {
   ) {
     
     this.uDocId=localStorage.getItem('userDocId');
-    this.projectsCollection=this._angularFireStore.collection<Project>('users/'+this.uDocId+'/projects');
+   // this.projectsCollection=this._angularFireStore.collection<Project>('users/'+this.uDocId+'/projects');
+    this.projectsCollection=this._angularFireStore.collection<Project>('users').doc(this.uDocId).collection('projects');
 
   }
 

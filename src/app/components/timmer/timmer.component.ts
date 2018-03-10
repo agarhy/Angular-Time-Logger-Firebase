@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TimeLog } from '../../models/time-log';
+import { TimeLog,INITIAL_TIMELOG } from '../../models/time-log';
 import { LogsService } from '../../services/logs.service';
 import { DataService } from '../../services/data.service';
 
@@ -16,7 +16,7 @@ import * as moment from 'moment';
 export class TimmerComponent implements OnInit {
 
   timmer:TimeLog;
-
+  timerTitle;string;
   startResume:boolean;
 
   constructor(
@@ -55,14 +55,7 @@ export class TimmerComponent implements OnInit {
   }
 
   initTimerLog(){
-    this.timmer = {
-      title:'',
-      running:false,
-      durations:<any>[],
-      count:"00:00:00.0",
-      countMilliseconds:0,   
-    };    
-
+    this.timmer = INITIAL_TIMELOG;
     
   }
 
@@ -87,6 +80,11 @@ export class TimmerComponent implements OnInit {
     .subscribe(i => { 
        that.timmer.countMilliseconds+=100;      
        this.timmer.count=moment.utc(moment.duration(that.timmer.countMilliseconds).asMilliseconds()).format("HH:mm:ss.S");
+       this.timmer.time.mseconds=moment.utc(moment.duration(that.timmer.countMilliseconds).asMilliseconds()).format("S");
+       this.timmer.time.seconds=moment.utc(moment.duration(that.timmer.countMilliseconds).asMilliseconds()).format("ss");
+       this.timmer.time.minutes=moment.utc(moment.duration(that.timmer.countMilliseconds).asMilliseconds()).format("mm");
+       this.timmer.time.hours=moment.utc(moment.duration(that.timmer.countMilliseconds).asMilliseconds()).format("HH");
+
     })
    
   }
@@ -103,9 +101,11 @@ export class TimmerComponent implements OnInit {
 
     if(!this.timmer.$id){
       //add new record if no Id exists
+      this.timmer.createdAt=parseInt(new Date().toString());
       this._logsService.addLog(this.timmer);
     }else{
       console.log('log updated');
+      this.timmer.updatedAt=parseInt(new Date().toString());
       this._logsService.updateLog(this.timmer);
 
     }
