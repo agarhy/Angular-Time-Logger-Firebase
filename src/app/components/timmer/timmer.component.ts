@@ -115,6 +115,10 @@ export class TimmerComponent implements OnInit {
   		stop:Date.now()
   	})
 
+  	if(this.timmer.title==''){
+  		this.timmer.title="Untitled Record"
+  	}
+
   	if(!this.timmer.$id){
       //add new record if no Id exists
       this.timmer.createdAt=parseInt(new Date().toString());
