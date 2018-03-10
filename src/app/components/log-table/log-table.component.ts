@@ -28,6 +28,16 @@ export class LogTableComponent implements OnInit {
   			c.time.seconds=moment.utc(moment.duration(c.count).asMilliseconds()).format("ss");
   			c.time.minutes=moment.utc(moment.duration(c.count).asMilliseconds()).format("mm");
   			c.time.hours=moment.utc(moment.duration(c.count).asMilliseconds()).format("HH");
+
+  			c.durations.map(d=>{
+  				d.time=moment.utc(moment.duration((d.stop-d.start)).asMilliseconds()).format("HH:mm:ss");
+
+          d.start=moment.utc(moment.duration(d.start).asMilliseconds()).format("HH:mm:ss");
+          d.stop=moment.utc(moment.duration(d.stop).asMilliseconds()).format("HH:mm:ss");
+
+
+  			})
+
   			return c;
   		});
 
@@ -50,6 +60,9 @@ export class LogTableComponent implements OnInit {
 
   TrackLogByFn(index, log){
      return log.$id; //
+   }
+   TrackDurationByFn(index, duration){
+     return duration.start; //
    }
 
  }

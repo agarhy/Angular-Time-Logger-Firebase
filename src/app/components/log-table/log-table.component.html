@@ -17,7 +17,7 @@
 				</div>
 				<div class="flex-wrp" >
 					<div class=" counter justify-content-center">
-						<span class="badge badge-pill badge-info">4</span>
+						<span *ngIf="(record.durations).length>1" class="badge badge-pill badge-info">{{ (record.durations).length }}</span>
 						{{ record.time.minutes }}:{{ record.time.seconds }}
 					</div>
 					<div class=" actions">			    					
@@ -28,16 +28,12 @@
 					</div>
 				</div>
 			</div>
-<!-- 			<div class="durations">
-				<div class="row">
-					<div class="col-sm-6">@ 12:32:33 -> 13:53:22 </div>			    						
-					<div class="col-sm-6">( 0:32:22 )</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-6">@ 12:32:33 -> 13:53:22 </div>			    						
-					<div class="col-sm-6">( 43:33 )</div>
-				</div>
-			</div> -->
+			<div class="durations">
+				<div class="row" *ngFor="let d of record.durations; trackBy TrackDurationByFn">
+					<div class="col-sm-6">@ {{ d.start }} -> {{ d.stop }} </div>			    						
+					<div class="col-sm-6">({{d.time}})</div>
+				</div>		
+			</div>
 		</div>
 
 
