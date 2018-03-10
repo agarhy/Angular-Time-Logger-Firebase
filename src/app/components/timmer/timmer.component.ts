@@ -121,11 +121,11 @@ export class TimmerComponent implements OnInit {
 
   	if(!this.timmer.$id){
       //add new record if no Id exists
-      this.timmer.createdAt=parseInt(new Date().toString());
+      this.timmer.createdAt=Date.now();
       this._logsService.addLog(this.timmer);
     }else{
     	console.log('log updated');
-    	this.timmer.updatedAt=parseInt(new Date().toString());
+    	this.timmer.updatedAt=Date.now();
     	this._logsService.updateLog(this.timmer);
 
     }
