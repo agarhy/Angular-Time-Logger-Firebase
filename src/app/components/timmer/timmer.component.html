@@ -1,7 +1,5 @@
 <section class="timer-section">
-<form >
-<input type="text" class="form-control" id="title" [(ngModel)]="timerTitle" placeholder="Enter title.  e.g. Workout, Running">
-</form>
+<input type="text" class="form-control" id="title" [(ngModel)]="timmer.title" placeholder="Enter title.  e.g. Workout, Running">
 	<div class="timer-actions">
 		<div class="timer-counter">
 			{{ timmer.time.minutes }}:{{ timmer.time.seconds }} <small>{{ timmer.time.mseconds }}</small>
