@@ -49,6 +49,7 @@ export class LogTableComponent implements OnInit {
 
   			return c;
   		});
+  		this.recordsGrouped=[];
       this.applyFilters();
   		//console.log(this.records);
   	})
