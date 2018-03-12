@@ -1841,12 +1841,12 @@ var UserService = /** @class */ (function () {
 var environment = {
     production: false,
     firebaseConfig: {
-        apiKey: "",
-        authDomain: "",
-        databaseURL: "",
-        projectId: "",
-        storageBucket: "",
-        messagingSenderId: ""
+        apiKey: "AIzaSyCxyKOrETjxdULFh-izxvu_aJL-kgnkTyk",
+        authDomain: "clientapp-8e9dc.firebaseapp.com",
+        databaseURL: "https://clientapp-8e9dc.firebaseio.com",
+        projectId: "clientapp-8e9dc",
+        storageBucket: "clientapp-8e9dc.appspot.com",
+        messagingSenderId: "180309689037"
     }
 };
 
