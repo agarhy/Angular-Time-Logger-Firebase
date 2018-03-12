@@ -111,6 +111,7 @@ export class TimmerComponent implements OnInit {
   	
   	this.timmer.running=false;  	
   	this.timmer.durations.push({
+  		time:'',
   		start:JSON.parse(localStorage.getItem('startOn')),
   		stop:Date.now()
   	})

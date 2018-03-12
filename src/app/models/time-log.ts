@@ -3,9 +3,9 @@ export interface TimeLog {
 	title:string,
 	running:boolean,
 	durations:[{
-		time:number,
-		start:number,
-		stop:number
+		time:any,
+		start:any,
+		stop:any
 	}],
 	count:string,
 	countMilliseconds:number,
