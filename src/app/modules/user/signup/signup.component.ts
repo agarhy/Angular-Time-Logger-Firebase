@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { UserService } from '../../services/user.service';
+import { AuthService } from '../../../services/auth.service';
+import { UserService } from '../user.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import { User } from '../../models/User';
+import { User } from '../User';
 
 @Component({
   selector: 'app-signup',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProjectService } from '../../services/project.service';
+import { ProjectService } from '../project.service';
 
-import { Project } from '../../models/Project';
+import { Project } from '../Project';
 
 
 @Component({

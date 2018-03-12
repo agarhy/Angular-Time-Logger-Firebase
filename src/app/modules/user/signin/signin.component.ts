@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-signin',
