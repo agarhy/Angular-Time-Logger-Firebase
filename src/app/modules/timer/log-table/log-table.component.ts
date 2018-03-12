@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { LogsService } from '../../services/logs.service';
-import { TimeLog } from '../../models/time-log';
+import { LogsService } from '../logs.service';
+import { TimeLog } from '../time-log';
 import * as moment from 'moment';
-import { DataService } from '../../services/data.service';
+import { DataService } from '../data.service';
 import { Observable } from 'rxjs';
 import 'rxjs/add/observable/from';
 import 'rxjs/operators';

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TimeLog } from '../../models/time-log';
-import { LogsService } from '../../services/logs.service';
-import { DataService } from '../../services/data.service';
+import { TimeLog } from '../time-log';
+import { LogsService } from '../logs.service';
+import { DataService } from '../data.service';
 
 import * as moment from 'moment';
 // import * as momentDurationFormatSetup from 'moment-duration-format';
