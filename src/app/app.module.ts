@@ -14,6 +14,8 @@ import { ProjectsModule } from "./modules/projects/projects.module";
 //Components
 import { AppComponent } from './app.component';
 
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,10 @@ import { AppComponent } from './app.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    StoreModule.forRoot({}),
+    StoreDevtoolsModule.instrument({
+    	maxAge:10
+    }),
     //App modules
     CoreModule,
     SharedModule,

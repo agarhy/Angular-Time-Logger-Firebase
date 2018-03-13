@@ -67,7 +67,7 @@ export class LogTableComponent implements OnInit {
     
     var sub=src.subscribe(obj=>{
     
-        console.log({day:obj[0].$day, records:obj});
+      //  console.log({day:obj[0].$day, records:obj});
         var day=obj[0].$day;
         var sumTime=0;
         var records=obj.map(el=> {

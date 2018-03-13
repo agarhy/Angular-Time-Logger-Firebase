@@ -1,8 +1,8 @@
 <section class="timer-section">
 <input type="text" class="form-control" id="title" [(ngModel)]="timmer.title" placeholder="Enter title.  e.g. Workout, Running">
 	<div class="timer-actions">
-		<div class="timer-counter">
-			{{ timmer.time.minutes }}:{{ timmer.time.seconds }} <small>{{ timmer.time.mseconds }}</small>
+		<div class="timer-counter" *ngIf="timer | async as timer_">
+			{{ timer_.time.minutes }}:{{ timer_.time.seconds}} <small>{{ timer_.time.mseconds }}</small>
 		</div>
 		<button [hidden]="timmer.running" type="button" class="btn rounded-circle btn-success" (click)="switchTimmer()" ><i class="material-icons">play_arrow</i></button>
 		<button [hidden]="!timmer.running" type="button" class="btn rounded-circle btn-danger" (click)="switchTimmer()" ><i class="material-icons">stop</i></button>

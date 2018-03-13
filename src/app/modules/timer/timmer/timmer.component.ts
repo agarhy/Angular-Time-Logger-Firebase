@@ -6,6 +6,9 @@ import { DataService } from '../data.service';
 
 import * as moment from 'moment';
 // import * as momentDurationFormatSetup from 'moment-duration-format';
+import { Store } from '@ngrx/store';
+import { timerState } from '../timer.reduce';
+import * as TimerActions from '../timer.actions'
 
 
 @Component({
@@ -15,20 +18,23 @@ import * as moment from 'moment';
 })
 export class TimmerComponent implements OnInit {
 
-	timmer:TimeLog;
+	timer: Observable<TimeLog>;
+	timmer: TimeLog;
 	timerTitle;string;
 	startResume:boolean;
 
 	constructor(
 		public _logsService:LogsService,
-		public _data:DataService
+		public _data:DataService,
+		private store:Store<timerState>
 		) { 
+	  this.timer = this.store.select('TimerStore').select('timer');
     //var duration = moment.duration(2000);   
     //console.log(moment.utc(duration.asMilliseconds()).format("HH:mm:ss.S"));
   }
 
   ngOnInit() {
-  	
+
   	this.initTimerLog();
 
      //Continue running timmer
@@ -72,7 +78,7 @@ export class TimmerComponent implements OnInit {
    		updatedAt:null 
 
    	};
-   	
+   	this.store.dispatch(new TimerActions.UpdateTimer(this.timmer));
    }
 
    startTimmer(){
@@ -86,6 +92,7 @@ export class TimmerComponent implements OnInit {
     localStorage.setItem('startOn', Date.now().toString() );
     localStorage.setItem('timerLogRecord',JSON.stringify(this.timmer));
     this.startResume=false;
+    this.store.dispatch(new TimerActions.UpdateTimer(this.timmer));
     this.timmerTick();
   }
 
@@ -100,7 +107,8 @@ export class TimmerComponent implements OnInit {
   		this.timmer.time.seconds=moment.utc(moment.duration(that.timmer.countMilliseconds).asMilliseconds()).format("ss");
   		this.timmer.time.minutes=moment.utc(moment.duration(that.timmer.countMilliseconds).asMilliseconds()).format("mm");
   		this.timmer.time.hours=moment.utc(moment.duration(that.timmer.countMilliseconds).asMilliseconds()).format("HH");
-
+      
+      this.store.dispatch(new TimerActions.UpdateTimer(this.timmer));
   	})
   	
   }

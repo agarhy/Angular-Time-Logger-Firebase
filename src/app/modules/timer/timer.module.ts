@@ -9,8 +9,13 @@ import { TimmerComponent } from './timmer/timmer.component';
 import { LogsService } from './logs.service';
 import { DataService } from './data.service';
 
+import { StoreModule } from '@ngrx/store';
+import { timerReducer } from './timer.reduce';
 @NgModule({
   imports: [
+   StoreModule.forFeature('TimerStore',{
+   	timer:timerReducer
+   }),
     CommonModule,
     FormsModule
   ],

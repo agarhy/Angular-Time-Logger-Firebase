@@ -27,7 +27,7 @@ export class LogsService {
       	// console.log(record.payload.doc.data());
       	// console.log(record.payload.doc.data().createdAt);
       	var tt=record.payload.doc.data().createdAt;
-      	console.log(moment.utc(moment.duration(tt).asMilliseconds()).format("MM/DD/YYYY"));
+      //	console.log(moment.utc(moment.duration(tt).asMilliseconds()).format("MM/DD/YYYY"));
 
       	const $day=moment.utc(moment.duration(tt).asMilliseconds()).format("MM/DD/YYYY");
       const data = record.payload.doc.data() as TimeLog;
