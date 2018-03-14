@@ -10,6 +10,7 @@ import { SharedModule } from "./modules/shared/shared.module";
 import { TimerModule } from "./modules/timer/timer.module";
 import { UserModule } from "./modules/user/user.module";
 import { ProjectsModule } from "./modules/projects/projects.module";
+import { HomeModule } from "./home/home.module";
 
 //Components
 import { AppComponent } from './app.component';
@@ -17,9 +18,15 @@ import { AppComponent } from './app.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 
+//layouts
+import { AppLayoutComponent } from './layouts/AppLayout.component';
+import { LandingComponent } from './layouts/LandingLayout.component';
+
 @NgModule({
   declarations: [
     AppComponent,
+    AppLayoutComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +37,7 @@ import { StoreModule } from '@ngrx/store';
     	maxAge:10
     }),
     //App modules
+    HomeModule,
     CoreModule,
     SharedModule,
     TimerModule,
