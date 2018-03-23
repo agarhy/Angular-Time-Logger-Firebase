@@ -3,12 +3,11 @@ import { Component } from "@angular/core";
 @Component({
 	selector:"layout-landing",
 	template:`
-	<main>
-	<div class="container">
+	<body id="home">
 
-	<router-outlet></router-outlet>
-	</div>
-	</main>
+	  <router-outlet></router-outlet>
+
+	</body>
 	`
 
 })

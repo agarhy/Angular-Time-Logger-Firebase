@@ -3,16 +3,20 @@ import { Component } from "@angular/core";
 @Component({
 	selector:"layout-app",
 	template:`
-	<app-navbar></app-navbar>
+	<body id="app">
 
-	<app-sidebar></app-sidebar>
 
-	<main>
-	<div class="container">
-	<flash-messages></flash-messages>
-	<router-outlet></router-outlet>
-	</div>
-	</main>
+	  <app-sidebar></app-sidebar>
+
+	  <main>
+	  <app-navbar></app-navbar>
+	  <div class="container">
+	  <flash-messages></flash-messages>
+	  <router-outlet></router-outlet>
+	  </div>
+	  </main>
+	  <script type="text/javascript" src=""></script>
+	</body>
 	`
 
 })

@@ -1,3 +1,109 @@
-<p>
-  main works!
-</p>
+<nav id="navbar" class="navbar navbar-expand-md fixed-top justify-content-between navbar-toggleable-md navbar-dark  ">
+		<div class="container-fluid">
+			<a class="navbar-brand " href="#"> <i class="material-icons">timer</i> Time Logger</a>
+			<button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarMenu" data-label-expanded="Close" aria-expanded="false">
+				<span class="sr-only">(toggle)</span>
+				<span class="navbar-toggler-icon">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</span>
+			</button>
+
+			<div class="collapse navbar-collapse flex-row-reverse" id="navbarMenu">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="#">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Features</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Project</a>
+					</li>
+					<li class="nav-item">
+						<a class="btn btn-primary" href="#" routerLink="/singin">Login</a>
+					</li>
+
+				</ul>				
+			</div>
+
+		</div>
+
+	</nav>
+  
+  	<header class="bg-greeny d-flex  align-items-center">
+
+		<div class="container">
+			<div class="row  align-items-center">
+				<div class="col-lg-7">
+					<div class="slogan">
+						<h1>Smart Time Tracking </h1>
+						<p><span class="app-name">TimeLogger</span> is an Open Source Project provides users with simple and intuitive time tracking tool. </p>
+						<span class="glyphicon glyphicon-console" aria-hidden="true"></span>
+						<div class="demo-timer">
+							<div class="demo-overlay_"></div>
+							<section class="timer-section row ">
+								<div class="col-sm-12 col-md-9">
+									<!-- <span class="red-dot"></span> -->
+									<input type="email" class="form-control" id="inputEmail4" placeholder="Enter title.  e.g. Workout, Running">
+								</div>
+								<div class="timer-actions col-sm-12 justify-content-between flex-row-reverse flex-md-row justify-content-md-end col-md-3">
+									<div class="timer-counter justify-content-between">
+										00:23<small>3</small>
+									</div>
+									<button type="button" class="btn rounded-circle btn-success timer-btn"><i class="material-icons">play_arrow</i></button>
+
+								</div>
+								<div class="timer-switch">
+									<ul>
+										<li class="active">
+											<a href="" class="btn btn-sm"><i class="material-icons">timer</i></a>
+										</li>
+										<li class="">
+											<a href="" class="btn btn-sm"><i class="material-icons">timelapse</i></a>
+										</li>
+									</ul>
+								</div>
+							</section>	
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-5">
+					<div class="signup-form d-md-none d-flex">
+						<a href="#" class="btn btn-primary btn-start"> Get Started</a>
+					</div>
+					<div class="signup-form d-none d-md-flex flex-column">
+
+						<form action="" method="post">
+							<div class="form-header">
+								<h2>Sign Up</h2>
+								<p>Start tracking you activites time!</p>
+							</div>
+							<div class="form-label-group">					
+								<input type="text"  id="inputUsername" class="form-control" name="username"  placeholder="Your name" required>
+								<label for="inputUsername">Your name</label>
+							</div>
+							<div class="form-label-group">
+								<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+								<label for="inputEmail">Email address</label>
+							</div>
+
+							<div class="form-label-group">
+								<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+								<label for="inputPassword">Password</label>
+							</div>
+
+							<div class="form-group">
+								<label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary btn-block btn-lg">Sign Up</button>
+							</div>	
+						</form>
+						<div class="text-center small">Already have an account? <a href="#">Login here</a></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
