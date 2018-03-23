@@ -16,10 +16,21 @@ export const appRoutes: Routes =[
 {
 	path:"",
 	component: LandingComponent,
-	children:[{
-    path:"",
-    component: MainComponent
-	}]
+	children:[
+	  {
+      path:"",
+      component: MainComponent
+	  },
+	  {
+		  path:'signup',
+		  component: SignupComponent,
+		  canActivate:[AuthGuard]
+	  },
+	  {
+		  path:'signin',
+		  component: SigninComponent,
+	  }
+	],
 },
 {
 	path:'app',
@@ -38,14 +49,6 @@ export const appRoutes: Routes =[
 		path:'settings',
 		component: SettingsComponent,
 		canActivate:[AuthGuard]
-	},
-	{
-		path:'signup',
-		component: SignupComponent
-	},
-	{
-		path:'signin',
-		component: SigninComponent,
 	},
 	{
 		path:'signout',

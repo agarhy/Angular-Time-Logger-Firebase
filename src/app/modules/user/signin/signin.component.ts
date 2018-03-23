@@ -29,7 +29,7 @@ export class SigninComponent implements OnInit {
         this.userService.getUserByUid(this.authService.afAuth.auth.currentUser.uid).subscribe(user=>{           
               localStorage.setItem('userDocId',user[0].$id);
               this.flashMessagesService.show('You are logged in', { cssClass: 'alert-success', timeout: 4000 });
-              this.router.navigate(['/']);
+              this.router.navigate(['/app/timer']);
          });
         
         

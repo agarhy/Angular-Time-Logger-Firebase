@@ -1,6 +1,6 @@
 <nav id="navbar" class="navbar navbar-expand-md fixed-top justify-content-between navbar-toggleable-md navbar-dark  ">
 		<div class="container-fluid">
-			<a class="navbar-brand " href="#"> <i class="material-icons">timer</i> Time Logger</a>
+			<a class="navbar-brand " routerLink="/" > <i class="material-icons">timer</i> Time Logger</a>
 			<button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarMenu" data-label-expanded="Close" aria-expanded="false">
 				<span class="sr-only">(toggle)</span>
 				<span class="navbar-toggler-icon">
@@ -22,7 +22,8 @@
 						<a class="nav-link" href="#">Project</a>
 					</li>
 					<li class="nav-item">
-						<a class="btn btn-primary" href="#" routerLink="/singin">Login</a>
+						<a *ngIf="!isLoggedIn" class="btn btn-primary" href="#" routerLink="/signin">Login</a>
+						<a *ngIf="isLoggedIn" class="btn btn-primary" href="#" routerLink="/app/timer">Go To Timer</a>
 					</li>
 
 				</ul>				
