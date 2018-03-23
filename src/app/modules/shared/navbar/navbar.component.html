@@ -1,5 +1,5 @@
-<nav class="navbar navbar-toggleable-md top-navbar fixed-top d-none d-md-block ">
-	<a class="navbar-brand" href="/"> Time Logger</a>
+<!-- <nav class="navbar navbar-toggleable-md top-navbar fixed-top d-none d-md-block ">
+	<a class="navbar-brand" href="#" routerLink='/'> Time Logger</a>
 	<ul class="nav float-right">
 		<li *ngIf="isLoggedIn" class="nav-item">          
 			<button class="btn btn-info rounded-right"> {{ loggedUser.email }}</button>
@@ -12,3 +12,18 @@
 		</li>
 	</ul>
 </nav>
+ -->
+
+	<nav class="navbar navbar-toggleable-md top-navbar bg-greeny d-none d-md-block ">
+
+			<ul *ngIf="isLoggedIn" class="nav justify-content-end">
+				<li class="nav-item ">
+					<a class="nav-link user-thumb" href="dashboard.html"> 
+						<span data-letters="AG"> {{ loggedUser.email }}</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#" (click)="onSignOutClick()" ><i class="material-icons">exit_to_app</i></a>
+				</li>
+			</ul>
+		</nav>

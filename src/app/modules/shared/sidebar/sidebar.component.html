@@ -1,45 +1,38 @@
-<nav class="navbar navbar-expand-md navbar-light navbar-fixed-left ">
-	<div class="navbar-header d-md-none d-block">
-		<a class="navbar-brand" href="#">Time Logger</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+	<nav class="navbar navbar-expand-md navbar-light navbar-fixed-left navbar-dark collapsed ">
+		<div class="navbar-header justify-content-center">
+			<a class="navbar-brand " href="#"> <i class="material-icons">timer</i> <span class="txt"> Time Logger </span></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#SideNav" aria-controls="SideNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
-	</div>
-	<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-		<ul class="navbar-nav mr-auto">
-			
-
-			<li class="nav-item">
-				<a class="nav-link" href="#" routerLink='/app/timer'><i class="material-icons">alarm</i> Timer 
-					<div class="float-right" *ngIf="timer | async as timer_">
+		</div>
+		<div class="collapse navbar-collapse " id="SideNav">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item " routerLinkActive="active">
+					<div class="label"></div>
+					<i class="top"><i></i></i>
+					<i class="bottom"><i></i></i>
+					<a class="nav-link" href="dashboard.html" routerLink='/app/timer'> <i class="material-icons">alarm</i> <span class="txt"> Timer 
+					<div class="" *ngIf="timer | async as timer_">
 					<span *ngIf="timer_.running">
 							({{ timer_.time.minutes }}:{{ timer_.time.seconds}})
 						</span>
-					</div>
+					</div> </span></a>
+				</li>
+				<li class="nav-item  " routerLinkActive="active">
+					<div class="label"></div>
+					<i class="top"><i></i></i>
+					<i class="bottom"><i></i></i>
+					<a class="nav-link" href="elements.html" routerLink='/app/projects'> <i class="material-icons">assignment</i> <span class="txt"> Projects</span></a>
+				</li>
+				<li class="nav-item " routerLinkActive="active">
+					<div class="label"></div>
+					<i class="top"><i></i></i>
+					<i class="bottom"><i></i></i>
+					<a class="nav-link" href="#" routerLink='/app/settings'> <i class="material-icons">settings</i> <span class="txt"> Settings</span></a>
+				</li>
+				
+			</ul>
 
-				</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#" routerLink='/app/projects'> <i class="material-icons">assignment</i> Projects</a>
-			</li>
-    <!--    <li class="nav-item">
-      <a class="nav-link" href="#">Analytics</a>
-    </li> -->
-    <li class="nav-item">
-    	<a class="nav-link" href="#" routerLink='/app/settings'><i class="material-icons">settings</i>  Settings</a>
-    </li>
-    <!-- <li class="nav-item">
-      <a class="nav-link" href="#" routerLink='/signup'>Register</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#" routerLink='/signin'>Login</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#" (click)="onSignOutClick()">Logout</a>
-    </li> -->
-
-  </ul>
-
-</div>
-</nav>
+		</div>
+	</nav>
