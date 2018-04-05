@@ -26,7 +26,7 @@
 						<a *ngIf="isLoggedIn" class="btn btn-primary" href="#" routerLink="/app/timer">Go To Timer</a>
 					</li>
 					<li *ngIf="isLoggedIn" class="nav-item">
-				    <a class="nav-link" href="#" routerLink="/logout">Logout</a>
+				    <a class="nav-link" href="#" (click)="onSignOutClick()">Logout</a>
 					</li>
 
 				</ul>				
@@ -36,7 +36,7 @@
 
 	</nav>
   
-  	<header class="bg-greeny d-flex  align-items-center">
+  <header class="bg-greeny d-flex  align-items-center">
 
 		<div class="container">
 			<div class="row  align-items-center">
@@ -74,13 +74,11 @@
 					</div>
 				</div>
 				<div class="col-lg-5">
-					<div class="signup-form d-md-none d-flex">
-						<a href="#" class="btn btn-primary btn-start"> Get Started</a>
-					</div>
-					<div *ngIf="isLoggedIn" class="signup-form d-none d-md-flex flex-column">
+		
+					<div *ngIf="isLoggedIn" class="signup-form  d-flex flex-column">
 							<a href="#" routerLink="/app" class="btn btn-primary btn-start"> Go To Timer</a>
 					</div>
-					<div *ngIf="!isLoggedIn" class="signup-form d-none d-md-flex flex-column">
+					<div *ngIf="!isLoggedIn" class="signup-form flex-column">
 
 						<form novalidate #signForm="ngForm" (submit)="onSignupSubmit(signForm)">
 							<div class="form-header">
@@ -137,3 +135,156 @@
 			</div>
 		</div>
 	</header>
+
+		<main class="main-content">
+
+		<section class="section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="screen d-none d-md-block">
+              <img src="../../../../../../assets/App_demo.png" >
+						</div>
+
+					</div>
+					<div class="col-md-6 col-sm-12">
+						<h2> Simple Time tracking</h2>
+						<div>
+
+							<ul class="feature-list">
+								<li>
+									<i class="material-icons">timer</i>
+									<h3>1-click tracking</h3>
+									<p>Start tracking your activities time by 1 simple button click.</p>
+								</li>
+								<li>
+									<i class="material-icons">timelapse</i>
+									<h3>manual enty</h3>
+									<p>Enter your times manually by sellecting start and end time</p>
+								</li>
+								<li>
+									<i class="material-icons">folder</i>
+									<h3>categories</h3>
+									<p>Allow you to assign any time record to a category or project</p>
+								</li>
+								<li>
+									<i class="material-icons">show_chart</i>
+									<h3>insights</h3>
+									<p>shows helpfull insights about recorded times</p>
+								</li>
+							</ul>
+						</div>
+
+
+
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section class="section bg-gray">
+			<div class="container">
+				<div class="row">
+
+					<div class="col-md-6 align-self-center">
+						<h2>Serverless Architecture</h2 >
+							<p><span class="app-name">TimeLogger</span> is fully backed with firebase sevices</p>
+						</div>
+						<div class="col-md-6">
+							<img width="100%" src="../../../assets/logo-built_white.png">
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+			<section class="section">
+				<div class="container">
+					<div class="row ">
+
+						<div class="col-md-12">
+							<h2>Thecnologies</h2>
+							<div class="row logos d-flex  justify-content-sm-center">
+								<div class="col-md-2">
+									<div class="logo-wrp">
+										<img  src="../../../assets/firebase_96dp.png">
+									</div>
+								</div>
+								<div class="col-md-2">
+									<div class="logo-wrp">
+										<img  src="../../../assets/angular.png">
+									</div>
+								</div>
+								<div class="col-md-2">
+									<div class="logo-wrp">
+										<img  src="../../../assets/bootstrap-solid.svg">
+									</div>
+								</div>
+								<div class="col-md-2">
+									<div class="logo-wrp">
+										<img  src="../../../assets/sass_logo.png">
+									</div>
+								</div>
+								<div class="col-md-2">
+									<div class="logo-wrp">
+										<img  src="../../../assets/gulp_logo.svg">
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer id="myFooter">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-3">
+						<h5>Get started</h5>
+						<ul>
+							<li><a href="#">Home</a></li>
+							<li><a href="#">Sign up</a></li>
+							<li><a href="#">Downloads</a></li>
+						</ul>
+					</div>
+					<div class="col-sm-3">
+						<h5>About us</h5>
+						<ul>
+							<li><a href="#">Company Information</a></li>
+							<li><a href="#">Contact us</a></li>
+							<li><a href="#">Reviews</a></li>
+						</ul>
+					</div>
+					<div class="col-sm-3">
+						<h5>Support</h5>
+						<ul>
+							<li><a href="#">FAQ</a></li>
+							<li><a href="#">Help desk</a></li>
+							<li><a href="#">Forums</a></li>
+						</ul>
+					</div>
+					<div class="col-sm-3 info">
+						<h5>Information</h5>
+						<p> <span class="app-name">TimeLogger</span>  is an Open Source Project provides users with simple and intuitive time tracking tool. </p>
+					</div>
+				</div>
+			</div>
+			<div class="second-bar">
+				<div class="container">
+					<h2 class="logo"><a href="#"> <i class="material-icons">timer</i> Time Logger </a></h2>
+					<div class="social-icons">
+						<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+						<a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+						<a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<script src="js/libs/jquery/dist/jquery.slim.js" ></script>
+		<script type="text/javascript" src="js/libs/tether/dist/js/tether.min.js"></script>
+
+		<script type="text/javascript" src="js/libs/bootstrap/dist/js/bootstrap.js"></script>
+		<script type="text/javascript" src="script.js"></script>

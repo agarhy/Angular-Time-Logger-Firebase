@@ -50,10 +50,7 @@ export class MainComponent implements OnInit {
  demoTimer(){
  	
  }
- onSignOutClick(){
- 	this.authService.logout();
- 	
- }
+
 
  onSignupSubmit(formData:any){
  	this.signUpFormHasError=false;
@@ -70,5 +67,12 @@ export class MainComponent implements OnInit {
  		this.signUpFormError=err;
  	});
  }
+
+  onSignOutClick(){
+    this.authService.logout();
+    localStorage.setItem('userDocId','');
+
+    this.router.navigate(['/']);
+  }
 
 }
