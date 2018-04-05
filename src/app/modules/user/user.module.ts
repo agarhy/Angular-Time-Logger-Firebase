@@ -4,12 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { SettingsComponent } from './settings/settings.comoponent';
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
+import { RouterModule } from '@angular/router';
 
 import { UserService } from './user.service';
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   declarations: [
     SettingsComponent,

@@ -19,8 +19,9 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [      
-        "../html/dist/css/bootstrap.css",
-        "../html/style.css"
+      	"../html/style.css",
+        "../html/dist/css/bootstrap.css"
+        
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",

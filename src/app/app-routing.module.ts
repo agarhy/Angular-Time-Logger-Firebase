@@ -24,7 +24,6 @@ export const appRoutes: Routes =[
 	  {
 		  path:'signup',
 		  component: SignupComponent,
-		  canActivate:[AuthGuard]
 	  },
 	  {
 		  path:'signin',
