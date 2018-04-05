@@ -2,7 +2,7 @@
 <h1>Settings</h1>
 
 <div class="row">
-	<div class="col-6">
+	<div class="col-12">
 	<h3>General</h3>
 
 		<div class="row">
@@ -56,9 +56,9 @@
 			</div>
 		</div>
 		
-		
+		<br>
 	</div>
-	<div class="col-6">
+	<div class="col-12">
 		<h2>Change Password</h2>
 		<form novalidate="" #passwordF="ngForm" (ngSubmit)="onSubmitChangePassword(passwordF)" >
 			<div class="form-group">
@@ -96,7 +96,7 @@
 		</form>
 		
 	</div>
-	<div class="col-6">
+<!-- 	<div class="col-6">
 		<h3>Notification</h3>
 		<form novalidate #notificationsF="ngForm" (ngSubmit)="onSubmitNotif()" >
 			<div class="form-group">
@@ -127,8 +127,8 @@
 		</form>
 
 		
-	</div>
-	<div class="col-6">
+	</div> -->
+	<div class="col-12">
 		<h3>TimeZone Settings</h3>
 		<form>
 			<div class="form-group">
@@ -138,6 +138,7 @@
 					[(ngModel)]=user.settings.timezone
 					#userSettingsTimezone="ngModel"
 					(change)="updateUserSetting()"
+					disabled
 				>
 					<option value="GMT">GMT</option>
 					<option value="UTC">UTC</option>
@@ -150,6 +151,7 @@
 					[(ngModel)]=user.settings.dateformat
 					#userSettingsDateformat="ngModel"
 					(change)="updateUserSetting()"
+					disabled
 				>
 					<option value="MM-DD-YY">MM-DD-YY</option>
 					<option value="MM/DD/YYYY">MM/DD/YYYY</option>
@@ -162,6 +164,7 @@
 					[(ngModel)]=user.settings.timeformat
 					#userSettingsTimeformat="ngModel"
 					(change)="updateUserSetting()"
+					disabled
 				>
 					<option value="12">12-hour</option>
 					<option value="24">24-hour</option>
@@ -175,6 +178,7 @@
 					[(ngModel)]=user.settings.durationformat
 					#userSettingsDurationformat="ngModel"
 					(change)="updateUserSetting()"
+					disabled 
 				>
 					<option value="classic">32:02 min</option>
 					<option value="full">0:32:02</option>

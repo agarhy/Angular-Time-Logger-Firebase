@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TimeLog } from '../time-log';
 import { LogsService } from '../logs.service';
@@ -22,6 +22,7 @@ export class TimmerComponent implements OnInit {
 	timmer: TimeLog;
 	timerTitle;string;
 	startResume:boolean;
+  ticker=Observable.interval(100);
 
 	constructor(
 		public _logsService:LogsService,
@@ -32,10 +33,14 @@ export class TimmerComponent implements OnInit {
     //var duration = moment.duration(2000);   
     //console.log(moment.utc(duration.asMilliseconds()).format("HH:mm:ss.S"));
   }
-
+  OnDestroy(){
+  	console.log('timerDetroy');
+  }
   ngOnInit() {
-
-  	this.initTimerLog();
+      console.log('timerInit');
+  	  // setInterval(()=>{
+  	  // 	console.log('working');
+  	  // },1000)
 
      //Continue running timmer
      if( JSON.parse(localStorage.getItem('timerOn')) ){
@@ -48,7 +53,7 @@ export class TimmerComponent implements OnInit {
      	}
      	
      }else{
-
+      this.initTimerLog();
      }
 
      //Resume log listner
@@ -98,9 +103,10 @@ export class TimmerComponent implements OnInit {
 
   timmerTick(){
   	var that=this
-  	Observable.interval(100)
+  	this.ticker
   	.takeWhile(() => this.timmer.running)
   	.subscribe(i => { 
+  		console.log('tickRunning');
   		that.timmer.countMilliseconds+=100;      
   		this.timmer.count=moment.utc(moment.duration(that.timmer.countMilliseconds).asMilliseconds()).format("HH:mm:ss.S");
   		this.timmer.time.mseconds=moment.utc(moment.duration(that.timmer.countMilliseconds).asMilliseconds()).format("S");

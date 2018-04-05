@@ -10,7 +10,7 @@
 	</div>
 	<div class="card-body">
 
-	<div class="record" *ngFor="let record of day.records; trackBy TrackLogByFn ">
+	<div  class="record" *ngFor="let record of day.records; trackBy TrackLogByFn ">
 			<div class="row record-wrp">
 				<div class=" title">
           {{ record.title }}
@@ -21,9 +21,8 @@
 						{{ record.time.minutes }}:{{ record.time.seconds }}
 					</div>
 					<div class=" actions">			    					
-						<button (click)="resumeLog(record.$id)" type="button" class="btn btn-sm btn-link"><i class="material-icons">play_arrow</i></button>		
-						<button (click)="deleteLog(record.$id)" type="button" class="btn btn-sm btn-link">Delete</button>	    			
-						<button type="button" class="btn btn-sm btn-link"><i class="material-icons">more_vert</i></button>
+						<button (click)="resumeLog(record.$id)" type="button" class="btn btn-sm btn-link"><i class="material-icons">play_circle_filled</i></button>		
+						<button (click)="deleteLog(record.$id)" type="button" class="btn btn-sm btn-link"><i class="material-icons">delete_forever</i></button>	
 
 					</div>
 				</div>
