@@ -1,0 +1,41 @@
+<div class="card timer-history" *ngFor="let day of recordsGrouped;">
+	<div class="card-header">
+    
+		<span class="badge badge-pill badge-light">{{day.day}}</span>
+
+		<div class="badge badge-pill badge-light timer-history-count float-right">
+			{{ day.sumTime }}
+		</div>
+
+	</div>
+	<div class="card-body">
+
+	<div  class="record" *ngFor="let record of day.records; trackBy TrackLogByFn ">
+			<div class="row record-wrp">
+				<div class=" title">
+          {{ record.title }}
+				</div>
+				<div class="flex-wrp" >
+					<div class=" counter justify-content-center">
+						<span *ngIf="(record.durations).length>1" class="badge badge-pill badge-info">{{ (record.durations).length }}</span>
+						{{ record.time.minutes }}:{{ record.time.seconds }}
+					</div>
+					<div class=" actions">			    					
+						<button (click)="resumeLog(record.$id)" type="button" class="btn btn-sm btn-link"><i class="material-icons">play_circle_filled</i></button>		
+						<button (click)="deleteLog(record.$id)" type="button" class="btn btn-sm btn-link"><i class="material-icons">delete_forever</i></button>	
+
+					</div>
+				</div>
+			</div>
+			<div class="durations">
+				<div class="row" *ngFor="let d of record.durations; trackBy TrackDurationByFn">
+					<div class="col-sm-6">@ {{ d.start }} -> {{ d.stop }} </div>			    						
+					<div class="col-sm-6">({{d.time}})</div>
+				</div>		
+			</div>
+		</div>
+
+
+	</div>
+
+</div> 	

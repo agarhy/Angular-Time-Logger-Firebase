@@ -1,0 +1,68 @@
+<div class="sign">
+	<main class="wrapper">
+		<nav id="navbar" class="navbar navbar-expand-md fixed-top justify-content-between navbar-toggleable-md navbar-dark  ">
+			<div class="container-fluid">
+				<a class="navbar-brand " href="#" routerLink="/"> <i class="material-icons">timer</i> Time Logger</a>
+
+			</div>
+
+		</nav>
+		<div class="container-fluid">
+			<div class="row ">
+				<div class="left col-md-6 d-flex  align-items-center">
+					<div class="slogan">
+						<h1>Smart Time Tracking </h1>
+						<p><span class="app-name">TimeLogger</span> is an Open Source Project provides users with simple and intuitive time tracking tool. </p>
+						<span class="glyphicon glyphicon-console" aria-hidden="true"></span>
+					</div>
+				</div>
+				<div class="right col-md-6 col-sm-12 d-flex justify-content-center align-items-center">	
+					<div class="signin-form">
+  
+
+						<form novalidate #signinForm="ngForm" (submit)="onSubmit(signinForm)">
+							<div class="form-header">
+								<h2>Sign In</h2>
+								<p>Start tracking your activities!</p>
+							</div>
+							<div class="form-label-group" *ngIf="signInFormHasError">
+								<div class="alert alert-danger">{{ signInFormError }}</div>
+							</div>
+
+              	<div class="form-label-group">					
+								<input 
+								  type="email"
+								  id="inputEmail"
+								  class="form-control"
+								  ngModel
+								  name="email"
+								  placeholder="Your Email" required>
+								<label for="inputEmail">Email address</label>
+							</div>
+							<div class="form-label-group">					
+								<input 
+								  type="password"
+								  id="inputPassword"
+								  class="form-control"
+								  ngModel
+								  name="password"
+								  placeholder="Password" required>
+								<label for="inputPassword">Password</label>
+							</div>
+<!-- 
+							<div class="form-group">
+								<label class="checkbox-inline"><input type="checkbox" required="required"> Keep me in !</label>
+							</div> -->
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary btn-block btn-lg">Sign in</button>
+							</div>	
+						</form>
+						<div class="text-center small">Don't have an account? <a href="#" routerLink="/">Signup here</a></div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</main>
+
+</div>
