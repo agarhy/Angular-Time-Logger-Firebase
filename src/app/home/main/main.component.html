@@ -22,8 +22,11 @@
 						<a class="nav-link" href="#">Project</a>
 					</li>
 					<li class="nav-item">
-						<a *ngIf="!isLoggedIn" class="btn btn-primary" href="#" routerLink="/signin">Login</a>
+						<a *ngIf="!isLoggedIn" class="btn btn-primary" href="#" routerLink="/signin">Sign in</a>
 						<a *ngIf="isLoggedIn" class="btn btn-primary" href="#" routerLink="/app/timer">Go To Timer</a>
+					</li>
+					<li *ngIf="isLoggedIn" class="nav-item">
+				    <a class="nav-link" href="#" routerLink="/logout">Logout</a>
 					</li>
 
 				</ul>				
@@ -74,35 +77,61 @@
 					<div class="signup-form d-md-none d-flex">
 						<a href="#" class="btn btn-primary btn-start"> Get Started</a>
 					</div>
-					<div class="signup-form d-none d-md-flex flex-column">
+					<div *ngIf="isLoggedIn" class="signup-form d-none d-md-flex flex-column">
+							<a href="#" routerLink="/app" class="btn btn-primary btn-start"> Go To Timer</a>
+					</div>
+					<div *ngIf="!isLoggedIn" class="signup-form d-none d-md-flex flex-column">
 
-						<form action="" method="post">
+						<form novalidate #signForm="ngForm" (submit)="onSignupSubmit(signForm)">
 							<div class="form-header">
 								<h2>Sign Up</h2>
 								<p>Start tracking you activites time!</p>
 							</div>
+
+							<div class="form-label-group" *ngIf="signUpFormHasError">
+								<div class="alert alert-danger">{{ signUpFormError }}</div>
+							</div>
 							<div class="form-label-group">					
-								<input type="text"  id="inputUsername" class="form-control" name="username"  placeholder="Your name" required>
+								<input 
+								  type="text"
+								  id="inputUsername"
+								  class="form-control"
+								  ngModel
+								  name="username"
+								  placeholder="Your name" required>
 								<label for="inputUsername">Your name</label>
 							</div>
 							<div class="form-label-group">
-								<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+								<input 
+								  type="email" 
+								  id="inputEmail" 
+								  class="form-control" 
+								  name="email"
+								  ngModel
+								  placeholder="Email address" required>
 								<label for="inputEmail">Email address</label>
 							</div>
 
 							<div class="form-label-group">
-								<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+								<input 
+								  type="password" 
+								  id="inputPassword" 
+								  class="form-control" 
+								  ngModel
+								  name="password"
+								  placeholder="Password" required>
 								<label for="inputPassword">Password</label>
 							</div>
 
 							<div class="form-group">
-								<label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+								<label class="checkbox-inline"><input type="checkbox" name="agreement" ngModel required> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
 							</div>
 							<div class="form-group">
-								<button type="submit" class="btn btn-primary btn-block btn-lg">Sign Up</button>
+								<button type="submit" [disabled]="signForm.invalid" class="btn btn-primary btn-block btn-lg">Sign Up</button>
 							</div>	
 						</form>
-						<div class="text-center small">Already have an account? <a href="#">Login here</a></div>
+						<div class="text-center small">Already have an account? <a href="#" routerLink="/signin">Login here</a></div>
+						
 					</div>
 				</div>
 			</div>

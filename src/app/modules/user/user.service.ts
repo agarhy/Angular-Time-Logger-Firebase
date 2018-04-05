@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from './User';
+import { AuthService } from '../../services/auth.service';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 
@@ -10,6 +11,7 @@ export class UserService {
  // currentUser: Observable<User[]>;
 
   constructor(
+  	private authService:AuthService,
   	private _angularFireStore: AngularFirestore
   ) { 
   	this.usersCollectionRef=this._angularFireStore.collection<User>('users');
@@ -46,6 +48,40 @@ export class UserService {
       })
      })
 
+  }
+
+  FireAuthSignup(formData:any){
+  	console.log(formData);
+  	return new Promise((resolve , reject)=>{
+  	this.authService.register(formData.email, formData.password)
+		.then((userData:User) => {
+			console.log(userData);
+			const _newUser:any = {
+				uid:userData.uid,
+				name:formData.username,
+			  settings:{
+				  notifications:{
+					  a:true,
+					  b:false,
+					  c:false
+				  },
+				  timezone:"UTC",
+				  dateformat:"MM-DD-YY",
+				  timeformat:"24",
+				  durationformat:"full"
+			  },
+			  timelogs:{}
+		  };
+
+		  this.CreateNewUser(_newUser);
+		  localStorage.setItem('userDocId',_newUser.uid);
+		  resolve(true);
+	})
+		.catch((err) => {
+			reject(err.message);
+		});
+
+	});
   }
 
 }
